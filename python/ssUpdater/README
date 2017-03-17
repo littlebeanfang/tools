@@ -1,0 +1,26 @@
+Linux users:(test under ubuntu)==============================================
+This script is used to update local shadowsocks accounts. To run this script:
+	1.install needed lib: pip install -r requirements.txt
+	2.run the updates for linux users:  ./update_linux.sh
+
+You need firstly install shadowsocks client and config your browser.
+Refer to:(don't miss check 'proxy dns' when you config firefox!)
+http://blog.sina.com.cn/s/blog_924d6a570102w4ir.html
+https://aitanlu.com/ubuntu-shadowsocks-ke-hu-duan-pei-zhi.html
+http://www.jianshu.com/p/fdb4d3ef7139
+http://boafanx.tabboa.com/73.boafanx
+
+This script only update the free accounts from 'www.ishadowsocks.me' and
+restart local ss client.
+Enjoy the internet! :)
+
+Mac users:===================================================================
+1.install needed lib: pip install -r requirements.txt
+install prettytable manually:
+http://stackoverflow.com/questions/22436014/cant-install-prettytable
+2. install app 'ishadowsocks', https://www.ishadowsocks.me
+3. run the updates for mac users: ./update_mac.sh
+
+Reference:
+https://www.starduster.me/2016/04/02/mac-shadowsocksx-config-file-to-os-x-user-default-plist/
+

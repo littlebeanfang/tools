@@ -1,0 +1,8 @@
+{
+    "local_port": 1080,
+    "method": "aes-256-cfb",
+    "password": "70040357",
+    "server": "a.ssx.host",
+    "server_port": 1024,
+    "timeout": 600
+}

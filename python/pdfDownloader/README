@@ -1,0 +1,14 @@
+This tool is used to download all linked pdf files on one page.
+For me, it's convinient to download matirials from the course websites :)
+================Usage================
+configurate the following strings in pdfdownloader.py:
++ 'srcurl': source url for pdf list page,
++ 'baseurl': downloading base url
++ 'pkgname': package to store the downloaded files
+===============Example===============
+Download the materials of cs229:
+srcurl = 'http://cs229.stanford.edu/materials.html'
+baseurl = 'http://cs229.stanford.edu/'
+pkgname = 'CS_229_Machine_Learning_Course_Materials'
+
+Enjoy the tool :)
