@@ -5,20 +5,49 @@ import json
 from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 
-r = requests.get("http://www.ishadowsocks.me/")
+# mode: 1-shadowsocks, 2-freevpnss
+mode=2
+if mode==1:
+	r = requests.get("http://www.ishadowsocks.me/")
+elif mode==2:
+	r = requests.get("https://get.freevpnss.me/")
+else:
+	pass
+
 r.encoding = 'utf-8'
 soup = BeautifulSoup(r.text, "html.parser")
-pw = soup.find_all(text=re.compile(u'密码'))
-server = soup.find_all(text=re.compile(u'服务器'))
-port = soup.find_all(text=re.compile(u'端口'))
+if mode==1:
+	pw = soup.find_all(text=re.compile(u'密码'))
+	server = soup.find_all(text=re.compile(u'服务器'))
+	port = soup.find_all(text=re.compile(u'端口'))
+elif mode==2:
+	pw = soup.find_all(text=re.compile(u'码'))
+	server = soup.find_all(text=re.compile(u'服务器地址'))
+	port = soup.find_all(text=re.compile(u'端口'))
+else:
+	pass
 
 def f(s):
-    return s.split(':')[1]
+	ssplit=s.split(u':')
+	ssplit2=s.split(u'：')
+	if len(ssplit)>1:
+		return ssplit[1]
+	elif len(ssplit2)>1:
+		return ssplit2[1]
+	else:
+		return ' '
 
+if mode==1:
+	pw = list(map(f, [pw[0], pw[2], pw[4]]))
+	server = list(map(f, [server[0], server[1], server[2]]))
+	port = list(map(f, [port[0], port[1], port[2]]))
+elif mode==2:
+	pw = list(map(f, [pw[5], pw[6], pw[7]]))
+	server = list(map(f, [server[3], server[4], server[5]]))
+	port = list(map(f, [port[0], port[1], port[2]]))
+else:
+	pass
 
-pw = list(map(f, [pw[0], pw[2], pw[4]]))
-server = list(map(f, [server[0], server[1], server[2]]))
-port = list(map(f, [port[0], port[1], port[2]]))
 l = []
 for i in range(3):
         d = {"method": "aes-256-cfb", "server": server[i], "password": pw[i], "server_port": int(port[i]), "local_port":1080, "timeout":600}
